@@ -33,9 +33,8 @@ exports.createStudy = function(req, res) {
     var canCreateStudy = null;
     client.get("mykey", function(err,value){ 
         var canCreateStudy = value;
-        if (canCreateStudy != null && canCreateStudy == false) {
+        if (canCreateStudy == null || canCreateStudy == false) {
             res.send({'error':'Cannot create study'});
-        return;
         }
         else {
             var invitecode = req.body.invitecode; 
