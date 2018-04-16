@@ -34,7 +34,7 @@ exports.createStudy = function(req, res) {
     client.get("mykey", function(err,value){ 
         var canCreateStudy = value;
         if (canCreateStudy == null || canCreateStudy == false) {
-            res.send({'error':'Cannot create study'});
+            res.send({'error':'Redis value not set/false'});
         }
         else {
             var invitecode = req.body.invitecode; 
